@@ -2,16 +2,35 @@
 namespace api\tests\unit\helpers;
 
 use Codeception\Test\Unit;
-use yii2lab\validator\Validator;
+use yii2lab\validator\DynamicModel;
 
 class ValidatorTest extends Unit
 {
-	
-	public function testLogin()
+	public $rules = [
+		['amount', 'integer'],
+		['is', 'boolean'],
+	];
+
+	public function testSuccess()
 	{
-		$validator = new Validator();
-		$result = $validator->encode($this->decoded);
-		expect($result)->equals($this->encoded);
+		$validator = new DynamicModel();
+		$validator->loadRules($this->rules);
+		$validator->loadData([
+			'amount' => 100,
+			'is' => '1',
+		]);
+		expect($validator->validate())->equals(true);
+	}
+
+	public function testFail()
+	{
+		$validator = new DynamicModel();
+		$validator->loadRules($this->rules);
+		$isValid = $validator->validateData([
+			'amount' => 'qwe',
+			'is' => 'qwe',
+		]);
+		expect($isValid)->equals(false);
 	}
 	
 }
