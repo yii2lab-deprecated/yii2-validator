@@ -14,6 +14,10 @@ class DynamicModel extends Model
 	private $labels;
 	private $scenarios;
 	
+	public function toArray() {
+		return $this->attrs;
+	}
+	
 	public function __get($name) {
 		return ArrayHelper::getValue($this->attrs, $name);
 	}
@@ -31,7 +35,6 @@ class DynamicModel extends Model
 	}
 
 	public function loadData($data) {
-		//Yii::configure($this, $data);
 		$this->load($data, '');
 	}
 
