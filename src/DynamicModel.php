@@ -14,7 +14,7 @@ class DynamicModel extends Model
 	private $labels;
 	private $scenarios;
 	
-	public function toArray() {
+	public function toArray(array $fields = null, array $expand = null, $recursive = null) {
 		return $this->attrs;
 	}
 	
