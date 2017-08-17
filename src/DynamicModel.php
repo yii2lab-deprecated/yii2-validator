@@ -3,7 +3,7 @@
 namespace yii2lab\validator;
 
 use Yii;
-use yii\base\Model;
+use common\base\Model;
 use yii\helpers\ArrayHelper;
 
 class DynamicModel extends Model
