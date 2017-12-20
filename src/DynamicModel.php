@@ -9,10 +9,10 @@ use yii\helpers\ArrayHelper;
 class DynamicModel extends Model
 {
 	
-	private $attrs;
-	private $rules;
-	private $labels;
-	private $scenarios;
+	private $attrs = [];
+	private $rules = [];
+	private $labels = [];
+	private $scenarios = [];
 	
 	public function toArray(array $fields = null, array $expand = null, $recursive = null) {
 		return $this->attrs;
