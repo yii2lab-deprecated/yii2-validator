@@ -2,7 +2,6 @@
 
 namespace yii2lab\validator;
 
-use Yii;
 use yii2lab\domain\base\Model;
 use yii\helpers\ArrayHelper;
 
