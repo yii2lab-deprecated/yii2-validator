@@ -2,6 +2,7 @@
 
 namespace yii2lab\validator;
 
+use Yii;
 use yii\validators\Validator;
 use yii2lab\helpers\Helper;
 
@@ -24,8 +25,8 @@ class DateValidator extends Validator
 			$isValid = $input_time == $time;
 		}
 		if(!$isValid) {
-			//$this->addError($attribute, t('yii', 'The format of {attribute} is invalid.', ['attribute' => $attribute]));
-			$this->addError($attribute, t('yii', 'The format of {attribute} is invalid.', ['attribute' => 'Birth Date']));
+			//$this->addError($attribute, Yii::t('yii', 'The format of {attribute} is invalid.', ['attribute' => $attribute]));
+			$this->addError($attribute, Yii::t('yii', 'The format of {attribute} is invalid.', ['attribute' => 'Birth Date']));
 		} else {
 			$this->$attribute = date('Y-m-d H:i:s', $time);
 		}
