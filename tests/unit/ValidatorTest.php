@@ -1,5 +1,5 @@
 <?php
-namespace api\tests\unit\helpers;
+namespace tests\unit;
 
 use Codeception\Test\Unit;
 use yii2lab\validator\DynamicModel;
