@@ -3,6 +3,7 @@
 namespace yii2lab\validator\helpers;
 
 use Exception;
+use yii2lab\misc\enums\TimeEnum;
 
 class IinDateHelper {
 	
@@ -21,7 +22,6 @@ class IinDateHelper {
 		if(!self::validateDate($date)) {
 			throw new Exception();
 		}
-		//$date['old'] =
 		self::getOld($date);
 		return $date;
 	}
@@ -37,8 +37,7 @@ class IinDateHelper {
 		$birthDateString = self::dateToString($date);
 		$nowDateString = self::getNowDateAsString();
 		$diffSec = self::dateStringToTimestamp($nowDateString) - self::dateStringToTimestamp($birthDateString);
-		$rate = self::getDateSecRateArray();
-		$yearCount = floor($diffSec / $rate['year']);
+		$yearCount = floor($diffSec / TimeEnum::SECOND_PER_YEAR);
 		if ($yearCount <= 0) {
 			throw new Exception();
 		}
@@ -57,18 +56,10 @@ class IinDateHelper {
 	
 	private static function dateStringToTimestamp($dateString) {
 		list($year, $month, $day) = explode('-', $dateString);
-		$rate = self::getDateSecRateArray();
 		return
-			$year * $rate['year'] +
-			$month * $rate['month'] +
-			$day * $rate['day'];
-	}
-	
-	private static function getDateSecRateArray() {
-		$result['day'] = 60 * 60 * 24;
-		$result['month'] = $result['day'] * 30;
-		$result['year'] = $result['month'] * 12;
-		return $result;
+			$year * TimeEnum::SECOND_PER_YEAR +
+			$month * TimeEnum::SECOND_PER_MONTH +
+			$day * TimeEnum::SECOND_PER_DAY;
 	}
 	
 	private static function getNowDateAsString() {
