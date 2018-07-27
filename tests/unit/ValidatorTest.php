@@ -1,7 +1,7 @@
 <?php
 namespace tests\unit;
 
-use Codeception\Test\Unit;
+use yii2lab\test\Test\Unit;
 use yii2lab\validator\DynamicModel;
 
 class ValidatorTest extends Unit
