@@ -19,7 +19,7 @@ class ValidatorTest extends Unit
 			'amount' => 100,
 			'is' => '1',
 		]);
-		expect($validator->validate())->equals(true);
+		$this->tester->assertEquals($validator->validate(), true);
 	}
 
 	public function testFail()
@@ -30,7 +30,7 @@ class ValidatorTest extends Unit
 			'amount' => 'qwe',
 			'is' => 'qwe',
 		]);
-		expect($isValid)->equals(false);
+		$this->tester->assertEquals($isValid, false);
 	}
 	
 }
