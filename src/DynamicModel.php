@@ -2,6 +2,7 @@
 
 namespace yii2lab\validator;
 
+use Yii;
 use yii2lab\domain\base\Model;
 use yii\helpers\ArrayHelper;
 
@@ -34,7 +35,7 @@ class DynamicModel extends Model
 	}
 
 	public function loadData($data) {
-		$this->load($data, '');
+		Yii::configure($this, $data);
 	}
 
 	public function validateData($data, $attributeNames = null) {
