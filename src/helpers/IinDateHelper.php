@@ -3,7 +3,7 @@
 namespace yii2lab\validator\helpers;
 
 use Exception;
-use yii2lab\misc\enums\TimeEnum;
+use yii2lab\extension\enum\enums\TimeEnum;
 
 class IinDateHelper {
 	
