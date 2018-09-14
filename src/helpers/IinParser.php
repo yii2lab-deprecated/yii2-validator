@@ -3,8 +3,11 @@
 namespace yii2lab\validator\helpers;
 
 use Exception;
+use Yii;
 
 class IinParser {
+	
+	const IIN_LENGTH = 12;
 	
 	private static function validateIsNumeric($value) {
 		$value = strval($value);
@@ -15,8 +18,10 @@ class IinParser {
 	
 	private static function validateLength($value) {
 		$value = strval($value);
-		if (strlen($value) != 12) {
-			throw new Exception();
+		if (strlen($value) != self::IIN_LENGTH) {
+			throw new Exception(Yii::t('yii', '{attribute} should contain at most {max, number} {max, plural, one{character} other{characters}}.', [
+				'max' => self::IIN_LENGTH,
+			]));
 		}
 	}
 	
