@@ -4,7 +4,7 @@ namespace yii2lab\validator;
 
 use Yii;
 use yii\validators\Validator;
-use yii2lab\helpers\Helper;
+use yii2lab\extension\common\helpers\Helper;
 
 class DateValidator extends Validator
 {
