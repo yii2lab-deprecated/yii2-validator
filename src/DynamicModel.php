@@ -92,9 +92,7 @@ class DynamicModel extends Model
     {
         foreach ($this->rules as $key => $value){
             if($value[0] == $fieldName && $value[1] == $ruleType){
-//
                 if(empty($newRule)){
-//          prr($this->rules[$key],1,1);
                     unset($this->rules[$key]);
                     sort($this->rules);
                     return;
