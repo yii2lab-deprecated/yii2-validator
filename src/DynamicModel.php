@@ -3,6 +3,7 @@
 namespace yii2lab\validator;
 
 use Yii;
+use yii\web\NotFoundHttpException;
 use yii2lab\domain\base\Model;
 use yii\helpers\ArrayHelper;
 
@@ -86,7 +87,25 @@ class DynamicModel extends Model
 	{
 		return $this->rules;
 	}
-	
+
+    public function replaceRulesByType($fieldName, $ruleType, array $newRule = null)
+    {
+        foreach ($this->rules as $key => $value){
+            if($value[0] == $fieldName && $value[1] == $ruleType){
+//
+                if(empty($newRule)){
+//          prr($this->rules[$key],1,1);
+                    unset($this->rules[$key]);
+                    sort($this->rules);
+                    return;
+                }
+                $this->rules[$key] = $newRule;
+                return;
+            }
+
+        }
+        throw new NotFoundHttpException('rules not found');
+    }
 	/**
 	 * @inheritdoc
 	 */
