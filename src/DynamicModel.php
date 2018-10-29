@@ -102,7 +102,6 @@ class DynamicModel extends Model
             }
 
         }
-        throw new NotFoundHttpException('rules not found');
     }
 	/**
 	 * @inheritdoc
