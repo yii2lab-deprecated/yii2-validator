@@ -9,6 +9,22 @@ class IinParser {
 	
 	const IIN_LENGTH = 12;
 	
+	/**
+	 * @param $value
+	 *
+	 * @return mixed
+	 * @throws Exception
+	 * @deprecated use \yii2woop\operation\domain\v2\helpers\iin\IinParser::parse()
+	 */
+	public static function parse($value) {
+		self::validate($value);
+		$part['date'] = IinDateHelper::parseDate($value);
+		$part['number'] = substr($value, 7, 4);
+		$part['sex'] = self::getSex($value);
+		//self::validateSum($value);
+		return $part;
+	}
+	
 	private static function validateIsNumeric($value) {
 		$value = strval($value);
 		if (!is_numeric($value)) {
@@ -28,15 +44,6 @@ class IinParser {
 	private static function validate($value) {
 		self::validateIsNumeric($value);
 		self::validateLength($value);
-	}
-	
-	public static function parse($value) {
-		self::validate($value);
-		$part['date'] = IinDateHelper::parseDate($value);
-		$part['number'] = substr($value, 7, 4);
-		$part['sex'] = self::getSex($value);
-		//self::validateSum($value);
-		return $part;
 	}
 	
 	private static function validateSum($value) {
