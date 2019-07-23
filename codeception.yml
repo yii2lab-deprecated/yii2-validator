@@ -1,4 +1,4 @@
-namespace: "yii2lab\\validator";
+namespace: "yii2lab\\validator"
 paths:
     tests: tests
     log: tests/_output
